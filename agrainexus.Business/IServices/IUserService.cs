@@ -17,6 +17,5 @@ namespace agrainexus.Business.IServices
         public string DeleteUser(int id);
         public string UserLogin(UserDto userDto);
         public string ForgotPassword(UserDto userDto);
-        public string GetToken(int id);
     }
 }

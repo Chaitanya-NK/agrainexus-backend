@@ -15,8 +15,8 @@ namespace agrainexus.Data.IRepositories
         public string Register(User user);
         public string UpdateUser(User user);
         public string DeleteUser(int id);
-        public string UserLogin(UserDto userDto);
+        public User UserLogin(UserDto userDto);
         public string ForgotPassword(UserDto userDto);
-        public string GetToken(int id);
+        public string GetToken(string userName);
     }
 }

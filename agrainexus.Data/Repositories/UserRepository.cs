@@ -3,6 +3,7 @@ using agrainexus.Data.Models;
 using agrainexus.Static;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,8 +35,6 @@ namespace agrainexus.Data.Repositories
                         sqlCommand.Parameters.AddWithValue("@UserName", user.UserName);
                         sqlCommand.Parameters.AddWithValue("@Email", user.Email);
                         sqlCommand.Parameters.AddWithValue("@Password", user.Password);
-                        sqlCommand.Parameters.AddWithValue("@State", user.State);
-                        sqlCommand.Parameters.AddWithValue("@District", user.District);
 
                         _connection.Open();
                         int rowsAffected = sqlCommand.ExecuteNonQuery();
@@ -76,9 +75,29 @@ namespace agrainexus.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public string GetToken(int id)
+        public string GetToken(string userName)
         {
-            throw new NotImplementedException();
+            using (SqlCommand sqlCommand = new SqlCommand("TokenDetails", _connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue(StaticUser.UserName, userName);
+                _connection.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                DataTable dt = new DataTable();
+                sqlDataAdapter.Fill(dt);
+                _connection.Close();
+
+                if (dt.Rows.Count > 0)
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
+                else
+                {
+                    return "Employee not found.";
+                }
+            }
         }
 
         public string GetUserByEmail(string email)
@@ -96,9 +115,39 @@ namespace agrainexus.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public string UserLogin(UserDto userDto)
+        public User UserLogin(UserDto userDto)
         {
-            throw new NotImplementedException();
+            if (userDto == null)
+            {
+                throw new ArgumentNullException(nameof(userDto));
+            }
+            using (SqlCommand sqlCommand = new SqlCommand("Login", _connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                sqlCommand.Parameters.AddWithValue("@UserName", userDto.UserName);
+                sqlCommand.Parameters.AddWithValue("@Password", userDto.Password);
+
+                using SqlDataAdapter sqlDataAdapter = new(sqlCommand);
+                var dataset = new DataSet();
+                sqlDataAdapter.Fill(dataset);
+
+                if(dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0)
+                {
+                    var user = new User
+                    {
+                        Id = (int)dataset.Tables[0].Rows[0]["Id"],
+                        UserName = dataset.Tables[0].Rows[0]["UserName"].ToString(),
+                        Email = dataset.Tables[0].Rows[0]["Email"].ToString()
+                    };
+
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+             }
         }
     }
 }

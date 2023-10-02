@@ -1,6 +1,8 @@
 ﻿using agrainexus.Business.IServices;
 using agrainexus.Data.IRepositories;
 using agrainexus.Data.Models;
+using agrainexus.TokenGeneration.TokenInterface;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,11 @@ namespace agrainexus.Business.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository iUserRepository)
+        private readonly IToken _token;
+        public UserService(IUserRepository iUserRepository, IToken iToken)
         {
             _userRepository = iUserRepository;
+            _token = iToken;
         }
         public string DeleteUser(int id)
         {
@@ -27,11 +31,6 @@ namespace agrainexus.Business.Services
         }
 
         public string GetAllUsers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetToken(int id)
         {
             throw new NotImplementedException();
         }
@@ -58,7 +57,29 @@ namespace agrainexus.Business.Services
 
         public string UserLogin(UserDto userDto)
         {
-            throw new NotImplementedException();
+            if (userDto == null)
+            {
+                throw new ArgumentNullException(nameof(userDto));
+            }
+
+            var result = _userRepository.UserLogin(userDto);
+
+            if (result != null)
+            {
+                var tokenModel = new TokenModel
+                {
+                    Id = result.Id.ToString(),
+                    UserName = result.UserName,
+                    Email = result.Email
+                };
+
+                string token = _token.CreateToken(tokenModel);
+                return token;
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("Invalid User");
+            }
         }
     }
 }

@@ -16,11 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IServices\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\agrainexus.Data\agrainexus.Data.csproj" />
+    <ProjectReference Include="..\agrainexus.TokenGeneration\agrainexus.TokenGeneration.csproj" />
   </ItemGroup>
 
 </Project>

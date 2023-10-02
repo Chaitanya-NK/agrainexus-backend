@@ -2,6 +2,8 @@ using agrainexus.Business.IServices;
 using agrainexus.Business.Services;
 using agrainexus.Data.IRepositories;
 using agrainexus.Data.Repositories;
+using agrainexus.TokenGeneration.TokenImplementation;
+using agrainexus.TokenGeneration.TokenInterface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddSingleton<IFarmRepository, FarmRepository>();
+builder.Services.AddSingleton<IFarmService, FarmService>();
+builder.Services.AddSingleton<IToken, Token>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -41,6 +46,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

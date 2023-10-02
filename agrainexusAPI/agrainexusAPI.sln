@@ -5,13 +5,15 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "agrainexusAPI", "agrainexusAPI.csproj", "{2057085D-5A6B-439D-B990-8A98B1596B2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agrainexus.Business", "..\agrainexus.Business\agrainexus.Business.csproj", "{5845387D-88EA-4529-BF44-907AB2A58407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "agrainexus.Business", "..\agrainexus.Business\agrainexus.Business.csproj", "{5845387D-88EA-4529-BF44-907AB2A58407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agrainexus.Data", "..\agrainexus.Data\agrainexus.Data.csproj", "{4F9C2A16-C368-48EC-A266-FF9BAE2F8104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "agrainexus.Data", "..\agrainexus.Data\agrainexus.Data.csproj", "{4F9C2A16-C368-48EC-A266-FF9BAE2F8104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agrainexus.Static", "..\agrainexus.Static\agrainexus.Static.csproj", "{C210953E-009B-4BC9-8331-77100556CDCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "agrainexus.Static", "..\agrainexus.Static\agrainexus.Static.csproj", "{C210953E-009B-4BC9-8331-77100556CDCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "agrainexus.TokenGeneration", "..\agrainexus.TokenGeneration\agrainexus.TokenGeneration.csproj", "{3BB87796-9194-4165-BF76-3120526D5A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "agrainexus.TokenGeneration", "..\agrainexus.TokenGeneration\agrainexus.TokenGeneration.csproj", "{3BB87796-9194-4165-BF76-3120526D5A45}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "agrainexus.Database", "..\agrainexus.Database\agrainexus.Database.sqlproj", "{1A28880F-4B85-4099-A5AB-061D8FA8E68F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{3BB87796-9194-4165-BF76-3120526D5A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BB87796-9194-4165-BF76-3120526D5A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BB87796-9194-4165-BF76-3120526D5A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A28880F-4B85-4099-A5AB-061D8FA8E68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A28880F-4B85-4099-A5AB-061D8FA8E68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A28880F-4B85-4099-A5AB-061D8FA8E68F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1A28880F-4B85-4099-A5AB-061D8FA8E68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A28880F-4B85-4099-A5AB-061D8FA8E68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A28880F-4B85-4099-A5AB-061D8FA8E68F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

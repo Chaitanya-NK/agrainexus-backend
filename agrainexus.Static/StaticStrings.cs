@@ -16,7 +16,6 @@ namespace agrainexus.Static
         public const string JwtIssuer = "https://www.google.com";
         public const string JwtAudience = "https://www.google.com";
         public const int JwtTokenExpiryMinutes = 1000;
-        public const string SPGETTOKENdetail = "SELECT Id, UserName, Email FROM Users";
     }
 
     public class StaticUser
@@ -27,5 +26,10 @@ namespace agrainexus.Static
         public const string Password = "Password";
         public const string State = "State";
         public const string District = "District";
+    }
+
+    public class StaticLogin
+    {
+        public const string InvalidUser = "Wrong Credentials";
     }
 }
