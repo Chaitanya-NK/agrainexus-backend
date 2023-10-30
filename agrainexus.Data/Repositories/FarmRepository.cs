@@ -3,6 +3,7 @@ using agrainexus.Data.Models;
 using agrainexus.Static;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,5 +60,53 @@ namespace agrainexus.Data.Repositories
                 return message;
             }
         }
+
+        public List<Farm> GetFarmDetailsByUserId(int userId)
+        {
+            try
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("GetFarmDetailsByUserId", _connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    sqlCommand.Parameters.AddWithValue("@UserId", userId);
+
+                    _connection.Open();
+
+                    DataTable dataTable = new DataTable();
+
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                    sqlDataAdapter.Fill(dataTable);
+
+                    _connection.Close();
+
+                    List<Farm> farms = new List<Farm>();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        Farm farm = new Farm
+                        {
+                            Id = Convert.ToInt32(row["Id"]),
+                            Location = row["Location"].ToString(),
+                            Crops = row["Crops"].ToString(),
+                            Area = row["Area"].ToString(),
+                            UserId = Convert.ToInt32(row["UserId"])
+                        };
+
+                        farms.Add(farm);
+                    }
+
+                    return farms;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes.
+                Console.WriteLine("An error occurred: " + ex.Message);
+                return null; // Return null or throw the exception if necessary.
+            }
+        }
+
     }
 }

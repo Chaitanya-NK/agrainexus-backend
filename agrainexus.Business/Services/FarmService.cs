@@ -23,5 +23,10 @@ namespace agrainexus.Business.Services
         {
             return _farmRepository.AddFarmDetails(farm);
         }
+
+        public List<Farm> GetFarmDetailsByUserId(int userId)
+        {
+            return _farmRepository.GetFarmDetailsByUserId(userId);
+        }
     }
 }

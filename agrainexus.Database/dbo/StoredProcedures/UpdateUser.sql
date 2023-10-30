@@ -12,7 +12,7 @@ BEGIN
 	SET
 		UserName = @UserName,
 		Email = @Email,
-		Password = @Password,
+		Password = @Password
 	WHERE
 		Id = @Id
 END
