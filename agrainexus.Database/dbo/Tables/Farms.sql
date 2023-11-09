@@ -4,5 +4,6 @@
     Crops NVARCHAR(MAX) NOT NULL,
     Area VARCHAR(100) NOT NULL,
     UserId INT NOT NULL,
+    NickName VARCHAR(20) NOT NULL,
     FOREIGN KEY (UserId) REFERENCES Users(Id)
 );

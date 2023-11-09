@@ -9,6 +9,7 @@ namespace agrainexus.Data.Models
     public class Farm
     {
         public int Id { get; set; }
+        public string? NickName { get; set; }
         public string? Location { get; set; }
         public string? Crops { get; set; }
         public string? Area { get; set; }

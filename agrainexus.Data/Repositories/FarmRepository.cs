@@ -33,6 +33,7 @@ namespace agrainexus.Data.Repositories
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
 
+                    sqlCommand.Parameters.AddWithValue("@NickName", farm.NickName);
                     sqlCommand.Parameters.AddWithValue("@Location", farm.Location);
                     sqlCommand.Parameters.AddWithValue("@Crops", farm.Crops);
                     sqlCommand.Parameters.AddWithValue("@Area", farm.Area);
@@ -88,6 +89,7 @@ namespace agrainexus.Data.Repositories
                         Farm farm = new Farm
                         {
                             Id = Convert.ToInt32(row["Id"]),
+                            NickName = row["NickName"].ToString(),
                             Location = row["Location"].ToString(),
                             Crops = row["Crops"].ToString(),
                             Area = row["Area"].ToString(),
