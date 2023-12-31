@@ -75,5 +75,6 @@
     <Build Include="dbo\StoredProcedures\Login.sql" />
     <Build Include="dbo\StoredProcedures\TokenDetails.sql" />
     <Build Include="dbo\StoredProcedures\UpdateUser.sql" />
+    <Build Include="dbo\StoredProcedures\GetFarmDetailsByUserId.sql" />
   </ItemGroup>
 </Project>

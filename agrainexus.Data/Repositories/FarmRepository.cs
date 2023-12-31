@@ -37,6 +37,7 @@ namespace agrainexus.Data.Repositories
                     sqlCommand.Parameters.AddWithValue("@Location", farm.Location);
                     sqlCommand.Parameters.AddWithValue("@Crops", farm.Crops);
                     sqlCommand.Parameters.AddWithValue("@Area", farm.Area);
+                    sqlCommand.Parameters.AddWithValue("@AreaUnits", farm.AreaUnits);
                     sqlCommand.Parameters.AddWithValue("@UserId", farm.UserId);
 
                     _connection.Open();
@@ -93,6 +94,7 @@ namespace agrainexus.Data.Repositories
                             Location = row["Location"].ToString(),
                             Crops = row["Crops"].ToString(),
                             Area = row["Area"].ToString(),
+                            AreaUnits = row["AreaUnits"].ToString(),
                             UserId = Convert.ToInt32(row["UserId"])
                         };
 
