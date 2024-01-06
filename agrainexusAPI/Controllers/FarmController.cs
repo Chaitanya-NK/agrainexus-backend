@@ -31,12 +31,14 @@ namespace agrainexusAPI.Controllers
             try
             {
                 var getToken = Request.Headers["Authorization"];
+                var token = _token.ReadToken(getToken);
                 if(getToken.IsNullOrEmpty())
                 {
                     return StatusCode(StatusCodes.Status401Unauthorized);
                 }
                 else
                 {
+                    farm.UserId = Convert.ToInt32(token.Id);
                     string data = _farmService.AddFarmDetails(farm);
                     return Ok(data);
                 }

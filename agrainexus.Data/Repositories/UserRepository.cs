@@ -56,6 +56,7 @@ namespace agrainexus.Data.Repositories
             catch (Exception ex)
             {
                 string? message = "User Registration failed" + ex.Message;
+                _connection.Close();
                 return message;
             }
         }

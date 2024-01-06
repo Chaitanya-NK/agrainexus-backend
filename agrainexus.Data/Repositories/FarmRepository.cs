@@ -59,6 +59,7 @@ namespace agrainexus.Data.Repositories
             catch(Exception ex)
             {
                 string? message = "Farm adding failed" + ex.Message;
+                _connection.Close();
                 return message;
             }
         }
@@ -108,6 +109,7 @@ namespace agrainexus.Data.Repositories
             {
                 // Log the exception for debugging purposes.
                 Console.WriteLine("An error occurred: " + ex.Message);
+                _connection.Close();
                 return null; // Return null or throw the exception if necessary.
             }
         }
