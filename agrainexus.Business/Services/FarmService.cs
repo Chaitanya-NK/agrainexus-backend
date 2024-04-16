@@ -28,5 +28,10 @@ namespace agrainexus.Business.Services
         {
             return _farmRepository.GetFarmDetailsByUserId(userId);
         }
+
+        public string UpdateFarmData(Farm farm)
+        {
+            return _farmRepository.UpdateFarmData(farm);
+        }
     }
 }

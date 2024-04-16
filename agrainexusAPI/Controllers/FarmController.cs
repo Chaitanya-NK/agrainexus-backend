@@ -96,8 +96,31 @@ namespace agrainexusAPI.Controllers
             }
         }
 
-
-
+        [HttpPut("UpdateFarm")]
+        [ProducesResponseType(typeof(Farm), 201)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public IActionResult UpdateFarm(Farm farm)
+        {
+            try
+            {
+                var getToken = Request.Headers["Authorization"];
+                if (getToken.IsNullOrEmpty())
+                {
+                    return StatusCode(StatusCodes.Status401Unauthorized);
+                }
+                else
+                {
+                    string data = _farmService.UpdateFarmData(farm);
+                    return Ok(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred: " + ex.Message);
+            }
+        }
 
     }
 }

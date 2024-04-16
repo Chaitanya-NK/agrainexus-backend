@@ -12,5 +12,7 @@ namespace agrainexus.Data.IRepositories
     {
         public string AddFarmDetails(Farm farm);
         public List<Farm> GetFarmDetailsByUserId(int userId);
+        public string UpdateFarmData(Farm farm);
+        public string DeleteFarm(int farmId);
     }
 }

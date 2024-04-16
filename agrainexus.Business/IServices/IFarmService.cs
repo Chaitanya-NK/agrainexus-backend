@@ -11,5 +11,6 @@ namespace agrainexus.Business.IServices
     {
         public string AddFarmDetails(Farm farm);
         public List<Farm> GetFarmDetailsByUserId(int userId);
+        public string UpdateFarmData(Farm farm);
     }
 }

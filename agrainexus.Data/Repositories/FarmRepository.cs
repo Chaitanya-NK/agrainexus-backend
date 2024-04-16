@@ -64,6 +64,11 @@ namespace agrainexus.Data.Repositories
             }
         }
 
+        public string DeleteFarm(int farmId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Farm> GetFarmDetailsByUserId(int userId)
         {
             try
@@ -114,5 +119,43 @@ namespace agrainexus.Data.Repositories
             }
         }
 
+        public string UpdateFarmData(Farm farm)
+        {
+            try
+            {
+                using (SqlCommand sqlCommand = new SqlCommand("UpdateFarmData", _connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    sqlCommand.Parameters.AddWithValue("@Id", farm.Id);
+                    sqlCommand.Parameters.AddWithValue("@NickName", farm.NickName);
+                    sqlCommand.Parameters.AddWithValue("@Location", farm.Location);
+                    sqlCommand.Parameters.AddWithValue("@Crops", farm.Crops);
+                    sqlCommand.Parameters.AddWithValue("@Area", farm.Area);
+                    sqlCommand.Parameters.AddWithValue("@AreaUnits", farm.AreaUnits);
+
+                    _connection.Open();
+                    int rowsAffected = sqlCommand.ExecuteNonQuery();
+                    _connection.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        string? message = "Farm updated successfully";
+                        return message;
+                    }
+                    else
+                    {
+                        string? message = "Farm updating failed";
+                        return message;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string? message = "Farm updating failed" + ex.Message;
+                _connection.Close();
+                return message;
+            }
+        }
     }
 }
