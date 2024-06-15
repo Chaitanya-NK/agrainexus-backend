@@ -25,6 +25,10 @@ builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<IFarmRepository, FarmRepository>();
 builder.Services.AddSingleton<IFarmService, FarmService>();
+/*builder.Services.AddSingleton<IOutsideTemperatureRepository, OutsideTemperatureRepository>();
+builder.Services.AddSingleton<IOutsideTemperatureService, OutsideTemperatureService>();*/
+builder.Services.AddSingleton<ILoginSessionRepository, LoginSessionRepository>();
+builder.Services.AddSingleton<ILoginSessionService, LoginSessionService>();
 builder.Services.AddSingleton<IToken, Token>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -28,6 +28,15 @@ namespace agrainexus.Static
         public const string District = "District";
     }
 
+    public class LoginSession
+    {
+        public const string Id = "Id";
+        public const string UserId = "UserId";
+        public const string SessionId = "SessionId";
+        public const string LoginTime = "LoginTime";
+        public const string LogoutTime = "LogoutTime";
+    }
+
     public class StaticLogin
     {
         public const string InvalidUser = "Wrong Credentials";
