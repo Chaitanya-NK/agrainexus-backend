@@ -78,5 +78,10 @@
     <Build Include="dbo\StoredProcedures\GetFarmDetailsByUserId.sql" />
     <Build Include="dbo\StoredProcedures\UpdateFarmData.sql" />
     <Build Include="dbo\StoredProcedures\DeleteFarm.sql" />
+    <Build Include="dbo\StoredProcedures\CreateLoginSession.sql" />
+    <Build Include="dbo\StoredProcedures\GetLoginSessionById.sql" />
+    <Build Include="dbo\StoredProcedures\UpdateLoginSession.sql" />
+    <Build Include="dbo\StoredProcedures\GetActiveLoginCount.sql" />
+    <Build Include="dbo\StoredProcedures\GetSessionIdByUserName.sql" />
   </ItemGroup>
 </Project>
